@@ -1,5 +1,6 @@
 let btnRandomEl = document.querySelector(".btn");
 let hexIdEl = document.querySelector(".hexId");
+let copyEl = document.querySelector("#copy");
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -11,6 +12,14 @@ function getRandomColor() {
 
 btnRandomEl.addEventListener("click",function(){
     $("#colorpad").css("background-color", getRandomColor());
-    hexIdEl.innerHTML = $("#colorpad");
+    hexIdEl.innerHTML = getRandomColor();
     
 })
+
+copyEl.addEventListener("click",handleClickButtonCopy);
+function handleClickButtonCopy() {
+  navigator.clipboard
+    .writeText(hexIdEl.innerHTML)
+    .then(() => alert("copy successful"));
+}
+
